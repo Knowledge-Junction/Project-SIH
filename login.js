@@ -1,44 +1,54 @@
-let signupBtn = document.getElementById("signupBtn");
-let signinBtn = document.getElementById("signinBtn");
-let nameField = document.getElementById("nameField");
-let title = document.getElementById("title");
-let username = document.getElementById('username');
-let email = document.getElementById('email');
-let pass = document.getElementById('pwd');
-let enterUsername = document.getElementById('username');
-let enterEmail = document.getElementById('email');
-let enterPwd = document.getElementById('pwd');
+function setFormMessage(formElement, type, message) {
+  const messageElement = formElement.querySelector(".form__message");
 
-signinBtn.onclick = function () {
-  nameField.style.maxHeight = "0";
-  title.innerHTML = "Sign In";
-  signupBtn.classList.add("disable");
-  signinBtn.classList.remove("disable");
-  let getUser = localStorage.getItem('userId');
-  let getEmail = localStorage.getItem('userEmail');
-  let getPwd = localStorage.getItem('userPwd');
-
-
-
-  if (enterEmail.value === getEmail) {
-    if (enterPwd.value === getPwd) {
-      alert('Login Successful');
-    }
-    else {
-      alert('Wrong Password!!! Try Again');
-    }
-  } else {
-    alert('Invalid Details');
-  }
+  messageElement.textContent = message;
+  messageElement.classList.remove("form__message--success", "form__message--error");
+  messageElement.classList.add(`form__message--${type}`);
 }
 
-
-signupBtn.onclick = function () {
-  nameField.style.maxHeight = "60px";
-  title.innerHTML = "Sign UP";
-  signinBtn.classList.add("disable");
-  signupBtn.classList.remove("disable");
-  localStorage.setItem('userId', username.value);
-  localStorage.setItem('userEmail', email.value);
-  localStorage.setItem('userPwd', pass.value);
+function setInputError(inputElement, message) {
+  inputElement.classList.add("form__input--error");
+  inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
 }
+
+function clearInputError(inputElement) {
+  inputElement.classList.remove("form__input--error");
+  inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.querySelector("#login");
+  const createAccountForm = document.querySelector("#createAccount");
+
+  document.querySelector("#linkCreateAccount").addEventListener("click", e => {
+      e.preventDefault();
+      loginForm.classList.add("form--hidden");
+      createAccountForm.classList.remove("form--hidden");
+  });
+
+  document.querySelector("#linkLogin").addEventListener("click", e => {
+      e.preventDefault();
+      loginForm.classList.remove("form--hidden");
+      createAccountForm.classList.add("form--hidden");
+  });
+
+  loginForm.addEventListener("submit", e => {
+      e.preventDefault();
+
+      // Perform your AJAX/Fetch login
+
+      setFormMessage(loginForm, "error", "Invalid username/password combination");
+  });
+
+  document.querySelectorAll(".form__input").forEach(inputElement => {
+      inputElement.addEventListener("blur", e => {
+          if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 10) {
+              setInputError(inputElement, "Username must be at least 10 characters in length");
+          }
+      });
+
+      inputElement.addEventListener("input", e => {
+          clearInputError(inputElement);
+      });
+  });
+});
