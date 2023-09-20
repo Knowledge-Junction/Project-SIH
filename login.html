@@ -18,7 +18,9 @@
                 <input type="password" class="form__input" autofocus placeholder="Password">
                 <div class="form__input-error-message"></div>
             </div>
-            <button class="form__button" type="submit">Continue</button>
+            <button class="form__button" type="submit" onclick="
+                goToHomePage();
+            ">Continue</button>
             <p class="form__text">
                 <a href="#" class="form__link">Forgot your password?</a>
             </p>
@@ -52,4 +54,9 @@
         </form>
     </div>
     <script src="login.js"></script>
+    <script>
+        function goToHomePage() {
+      window.location.href = "index.html";
+    }
+    </script>
 </body>
