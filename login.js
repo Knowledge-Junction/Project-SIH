@@ -34,10 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loginForm.addEventListener("submit", e => {
       e.preventDefault();
-
-      // Perform your AJAX/Fetch login
-
+      
+      /*we have to perform the AJAX fetch login to get the value set in local storage and check if the data is valid or not, 
+      then only we can show the "invalid user name/password"*/
+      if(loginForm.value === 'error'){
       setFormMessage(loginForm, "error", "Invalid username/password combination");
+    }else{
+      setFormMessage(loginForm, "success", "Login Successful");
+    }
   });
 
   document.querySelectorAll(".form__input").forEach(inputElement => {
