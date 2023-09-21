@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIH</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="count.css">
 </head>
 
 <body>
@@ -31,7 +32,7 @@
                 </div>
             </nav>
         </header>
-        
+
         <section id="Home" class=" flex space-even  ">
             <div class="home-left">
                 <h1>Welcome to Knowledge Junction</h1>
@@ -103,50 +104,56 @@
                 <div class="cards">
                     <div class="card-heading"> Multilingual</div>
                     <div>
-                        <p class="describe">ensures a diverse, inclusive learning environment, allowing students to
+                        <p class="describe">Ensures a diverse, inclusive learning environment, allowing students to
                             access content in their preferred language on our smart education website.</p>
                     </div>
                 </div>
             </div>
         </section>
-
         <section id="contact" class="flex space-even">
             <div class="form flex center column">
-            <h1>Contact us</h1>
-            <form class="flex column">
-                <label for="name">Name :</label>
-                <input type="text" id="name" placeholder="Enter your name">
+                <h1>Contact us</h1>
+                <form class="flex column">
+                    <label for="name">Name :</label>
+                    <input type="text" id="name" placeholder="Enter your name">
 
-                <label for="phone">Phone no. :</label>
-                <input type="number" id="phone" placeholder="Enter your phone no.">
+                    <label for="phone">Phone no. :</label>
+                    <input type="number" id="phone" placeholder="Enter your phone no.">
 
-                <label for="email">Email :</label>
-                <input type="email" id="email" placeholder="Enter your email">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" placeholder="Enter your email">
 
-                <label for="subject">Subject :</label>
-                <input type="text" id="subject" placeholder="Subject">
+                    <label for="subject">Subject :</label>
+                    <input type="text" id="subject" placeholder="Subject">
 
-               
-                <textarea id="text" cols="60" rows="10" placeholder="Message"></textarea>
-               
-                <input class="submit" type="submit" value="Submit">
-            </form>
-        </div>
+
+                    <textarea id="text" cols="60" rows="10" placeholder="Message"></textarea>
+
+                    <input class="submit" type="submit" value="Submit">
+                </form>
+            </div>
             <div>
                 <img src="contact.png" alt="">
             </div>
-           </section>
-        
+        </section>
+        <section class="previous-footer">
+            <div class="container2">
+                <p class="count-paragraph">Total Visitors</p>
+                <h1 id="count" class="count1"></h1>
+            </div>
+        </section>
+
         <footer class="flex center">
-            <p>Copyright &#169 2023 Sorting Knowledge Junction  Technologies Pvt Ltd.All Rights Reserved.</p>
+            <p>Copyright &#169 2023 Sorting Knowledge Junction Technologies Pvt Ltd.All Rights Reserved.</p>
         </footer>
     </div>
 
     <script>
         function myFunction() {
-      window.location.href = "login.html";
-    }
+            window.location.href = "login.html";
+        }
     </script>
+    <script src="count.js"></script>
 </body>
 
 </html>
